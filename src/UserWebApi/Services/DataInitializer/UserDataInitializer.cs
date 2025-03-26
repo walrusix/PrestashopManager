@@ -20,14 +20,14 @@ namespace Walrus.PrestashopManager.UserWebApi.Services.DataInitializer
         {
             if (!roleManager.RoleExistsAsync("Admin").GetAwaiter().GetResult())
             {
-                roleManager.CreateAsync(new Role { Name = "Admin", Description = "Admin role" }).GetAwaiter().GetResult();
+                roleManager.CreateAsync(new Role { Name = "Admin" }).GetAwaiter().GetResult();
             }
             if (!userManager.Users.AsNoTracking().Any(p => p.UserName == "Admin"))
             {
                 var user = new User
                 {
                     UserName = "admin",
-                    Email = "admin@site.com"
+                    Email = "amin.ahmadi.asl@gmail.com"
                 };
                 userManager.CreateAsync(user, "123456").GetAwaiter().GetResult();
                 userManager.AddToRoleAsync(user, "Admin").GetAwaiter().GetResult();

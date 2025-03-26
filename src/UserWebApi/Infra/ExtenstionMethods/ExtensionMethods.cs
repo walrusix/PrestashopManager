@@ -29,6 +29,8 @@ using Microsoft.AspNetCore.Builder;
 using Walrus.PrestashopManager.UserWebApi.Infra.Configuration;
 using WebFramework.Middlewares;
 using Microsoft.AspNetCore.Hosting;
+using Walrus.PrestashopManager.UserWebApi.Services.ExtensionMethods;
+
 
 namespace Walrus.PrestashopManager.UserWebApi.Infra.ExtenstionMethods
 {
@@ -38,17 +40,17 @@ namespace Walrus.PrestashopManager.UserWebApi.Infra.ExtenstionMethods
         {
             var mainSetting = configuration.GetSection(nameof(MainSettings)).Get<MainSettings>();
             services.InitializeAutoMapper();
-            services.AddDbContext(configuration);
             services.AddCustomIdentity(mainSetting.IdentitySettings);
             services.AddMinimalMvc();
             services.AddJwtAuthentication(mainSetting.JwtSettings);
             services.AddCustomApiVersioning();
             services.AddSwagger();
+            services.AddServicesLayer(configuration);
         }
 
         public static void UseInfraLayer(this IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.IntializeDatabase();
+            app.InfraIntializeDatabase();
             app.UseCustomExceptionHandler();
             app.UseHsts(env);
             app.UseHttpsRedirection();
@@ -64,16 +66,14 @@ namespace Walrus.PrestashopManager.UserWebApi.Infra.ExtenstionMethods
             });
         }
 
-
-
-        private static void AddDbContext(this IServiceCollection services, IConfiguration configuration)
+        public static void RegisterInfraServices(this ServiceCollection serviceCollection)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-            {
-                options
-                    .UseSqlServer(configuration.GetConnectionString("SqlServerMainDb"));
-            });
+            serviceCollection.RegisterServicesServices();
         }
+
+
+
+
 
         private static void AddMinimalMvc(this IServiceCollection services)
         {

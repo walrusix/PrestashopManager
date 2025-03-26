@@ -22,7 +22,7 @@ namespace WebFramework.Configuration
             return app;
         }
 
-        public static IApplicationBuilder IntializeDatabase(this IApplicationBuilder app)
+        public static IApplicationBuilder InfraIntializeDatabase(this IApplicationBuilder app)
         {
             Assert.NotNull(app, nameof(app));
 

@@ -17,7 +17,6 @@ namespace Walrus.PrestashopManager.UserWebApi.Services.Services.Core
 {
     public class JwtService : IJwtService, IScopedDependency
     {
-        //private readonly JwtSettings _jwtSettings;
 
         private readonly MainSettings _mainSetting;
         private readonly SignInManager<User> signInManager;

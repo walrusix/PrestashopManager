@@ -6,10 +6,11 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Walrus.PrestashopManager.Domain.User;
+using Walrus.PrestashopManager.UserWebApi.Services.Services.Contracts;
 
 namespace Walrus.PrestashopManager.UserWebApi.Services.Services.Core
 {
-    public class UserService
+    public class UserService: IUserService
     {
         public UserService()
         {

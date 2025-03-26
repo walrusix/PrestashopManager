@@ -191,15 +191,9 @@ namespace Walrus.PrestashopManager.Data.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("NormalizedName")
                         .HasMaxLength(256)
@@ -226,29 +220,16 @@ namespace Walrus.PrestashopManager.Data.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<int>("Age")
-                        .HasColumnType("int");
-
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("FullName")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("Gender")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsActive")
+                    b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
                     b.Property<DateTimeOffset?>("LastLoginDate")
@@ -364,7 +345,7 @@ namespace Walrus.PrestashopManager.Data.Migrations
             modelBuilder.Entity("Walrus.PrestashopManager.Domain.Post.Post", b =>
                 {
                     b.HasOne("Walrus.PrestashopManager.Domain.User.User", "Author")
-                        .WithMany("Posts")
+                        .WithMany()
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -384,11 +365,6 @@ namespace Walrus.PrestashopManager.Data.Migrations
                 {
                     b.Navigation("ChildCategories");
 
-                    b.Navigation("Posts");
-                });
-
-            modelBuilder.Entity("Walrus.PrestashopManager.Domain.User.User", b =>
-                {
                     b.Navigation("Posts");
                 });
 #pragma warning restore 612, 618

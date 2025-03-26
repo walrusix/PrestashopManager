@@ -1,5 +1,4 @@
-﻿using Autofac;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,15 +28,16 @@ namespace Walrus.PrestashopManager.UserWebApi.WebApi
         {
             services.Configure<MainSettings>(Configuration.GetSection(nameof(MainSettings)));
             services.AddInfraLayer(Configuration);
+            
         }
 
         // ConfigureContainer is where you can register things directly with Autofac. 
         // This runs after ConfigureServices so the things ere will override registrations made in ConfigureServices.
         // Don't build the container; that gets done for you by the factory.
-        public void ConfigureContainer(ContainerBuilder builder)
+        public void ConfigureContainer(ServiceCollection serviceCollection)
         {
-            
-            builder.AddServices();
+            //builder.AddInfraServices();
+            serviceCollection.RegisterInfraServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
