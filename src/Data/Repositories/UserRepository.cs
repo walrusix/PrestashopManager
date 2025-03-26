@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Walrus.PrestashopManager.Data.Contracts;
+using Walrus.PrestashopManager.Domain.Common;
 using Walrus.PrestashopManager.Domain.User;
 using Walrus.PrestashopManager.Utilities;
 using Walrus.PrestashopManager.Utilities.Exceptions;

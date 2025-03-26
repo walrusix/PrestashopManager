@@ -1,6 +1,6 @@
 ﻿namespace Walrus.PrestashopManager.Utilities
 {
-    public class SiteSettings
+    public class MainSettings
     {
         public JwtSettings JwtSettings { get; set; }
         public IdentitySettings IdentitySettings { get; set; }

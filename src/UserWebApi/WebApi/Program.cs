@@ -5,7 +5,6 @@ using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using MyApi;
 using NLog;
 using NLog.Config;
 using NLog.Targets;

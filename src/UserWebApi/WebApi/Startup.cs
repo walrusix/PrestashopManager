@@ -10,35 +10,34 @@ using WebFramework.CustomMapping;
 using WebFramework.Middlewares;
 using WebFramework.Swagger;
 
-namespace MyApi
+namespace Walrus.PrestashopManager.UserWebApi.WebApi
 {
     public class Startup
     {
-        private readonly SiteSettings _siteSetting;
+        private readonly MainSettings _mainSetting;
         public IConfiguration Configuration { get; }
 
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-
-            _siteSetting = configuration.GetSection(nameof(SiteSettings)).Get<SiteSettings>();
+            _mainSetting = configuration.GetSection(nameof(MainSettings)).Get<MainSettings>();
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<SiteSettings>(Configuration.GetSection(nameof(SiteSettings)));
+            services.Configure<MainSettings>(Configuration.GetSection(nameof(MainSettings)));
 
             services.InitializeAutoMapper();
 
             services.AddDbContext(Configuration);
 
-            services.AddCustomIdentity(_siteSetting.IdentitySettings);
+            services.AddCustomIdentity(_mainSetting.IdentitySettings);
 
             services.AddMinimalMvc();
 
 
-            services.AddJwtAuthentication(_siteSetting.JwtSettings);
+            services.AddJwtAuthentication(_mainSetting.JwtSettings);
 
             services.AddCustomApiVersioning();
 

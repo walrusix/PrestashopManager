@@ -5,6 +5,7 @@ using Walrus.PrestashopManager.Data.Contracts;
 using Walrus.PrestashopManager.Data.Repositories;
 using Walrus.PrestashopManager.Domain.Common;
 using Walrus.PrestashopManager.Utilities;
+using Walrus.PrestashopManager.Utilities.Utilities;
 
 namespace WebFramework.Configuration
 {
@@ -15,7 +16,7 @@ namespace WebFramework.Configuration
             //RegisterType > As > Liftetime
             containerBuilder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>)).InstancePerLifetimeScope();
 
-            var commonAssembly = typeof(SiteSettings).Assembly;
+            var commonAssembly = typeof(Assert).Assembly;
             var entitiesAssembly = typeof(IEntity).Assembly;
             var dataAssembly = typeof(ApplicationDbContext).Assembly;
             var servicesAssembly = typeof(JwtService).Assembly;

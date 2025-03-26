@@ -8,10 +8,10 @@ using System.Net;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Logging;
-using WebFramework.Api;
 using Microsoft.Extensions.Hosting;
 using Walrus.PrestashopManager.Utilities;
 using Walrus.PrestashopManager.Utilities.Exceptions;
+using Walrus.PrestashopManager.UserWebApi.Infra.Api;
 
 namespace WebFramework.Middlewares
 {

@@ -4,19 +4,19 @@
         <name>Walrus.PrestashopManager.UserWebApi.WebApi</name>
     </assembly>
     <members>
-        <member name="P:MyApi.Controllers.v1.AddressDto.Country">
+        <member name="P:Walrus.PrestashopManager.UserWebApi.WebApi.Controllers.v1.AddressDto.Country">
             <summary>
             3-letter ISO country code
             </summary>
             <example>Iran</example>
         </member>
-        <member name="P:MyApi.Controllers.v1.AddressDto.City">
+        <member name="P:Walrus.PrestashopManager.UserWebApi.WebApi.Controllers.v1.AddressDto.City">
             <summary>
             Name of city
             </summary>
             <example>Seattle</example>
         </member>
-        <member name="M:MyApi.Controllers.v1.UsersController.Token(MyApi.Models.TokenRequest,System.Threading.CancellationToken)">
+        <member name="M:Walrus.PrestashopManager.UserWebApi.WebApi.Controllers.v1.UsersController.Token(Walrus.PrestashopManager.UserWebApi.WebApi.Models.TokenRequest,System.Threading.CancellationToken)">
             <summary>
             This method generate JWT Token
             </summary>

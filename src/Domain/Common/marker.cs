@@ -10,4 +10,12 @@ namespace Walrus.PrestashopManager.Domain.Common
     {
     }
 
+    public interface ITransientDependency
+    {
+    }
+
+    public interface ISingletonDependency
+    {
+    }
+
 }
