@@ -1,0 +1,80 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35913.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Walrus.PrestashopManager.Data", "Data\Walrus.PrestashopManager.Data.csproj", "{034B9977-3261-4A11-AEA5-EEBEAEAAC31B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - Utilities", "01 - Utilities", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Walrus.PrestashopManager.Utilities", "Utilites\Walrus.PrestashopManager.Utilities.csproj", "{60D74335-FFB4-2201-E924-2ECDA5596709}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Domain", "02 - Domain", "{2F409615-43D7-4180-A62F-C8E5A2FF501D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 - Data", "03 - Data", "{FB56D0F9-9B85-4283-B8F4-D3FA459BECC6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 - UserWebApi", "04 - UserWebApi", "{08F2544D-E2AA-49E4-84A0-2C66696F0026}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - Services", "01 - Services", "{BF8F8BF3-C62C-42C8-947E-5EFC89325164}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Infra", "02 - Infra", "{61237632-779E-4589-8A13-DF6FEF72FA22}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 -WebApi", "03 -WebApi", "{DC920657-EF5B-49EA-8F9B-F3EA506FA685}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Walrus.PrestashopManager.Domain", "Domain\Walrus.PrestashopManager.Domain.csproj", "{31EF9AD8-07A5-60D5-EB8C-2DBDCA1C6ADD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Walrus.PrestashopManager.UserWebApi.Services", "UserWebApi\Services\Walrus.PrestashopManager.UserWebApi.Services.csproj", "{3CC483B7-8AF1-F08A-5F3E-05178D0F82E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Walrus.PrestashopManager.UserWebApi.Infra", "UserWebApi\Infra\Walrus.PrestashopManager.UserWebApi.Infra.csproj", "{0FE86891-6623-EE8E-10D9-75CB09267FBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Walrus.PrestashopManager.UserWebApi.WebApi", "UserWebApi\WebApi\Walrus.PrestashopManager.UserWebApi.WebApi.csproj", "{623526D0-0DCF-4A68-82E8-B404A1CFF293}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{034B9977-3261-4A11-AEA5-EEBEAEAAC31B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{034B9977-3261-4A11-AEA5-EEBEAEAAC31B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{034B9977-3261-4A11-AEA5-EEBEAEAAC31B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{034B9977-3261-4A11-AEA5-EEBEAEAAC31B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60D74335-FFB4-2201-E924-2ECDA5596709}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60D74335-FFB4-2201-E924-2ECDA5596709}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60D74335-FFB4-2201-E924-2ECDA5596709}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60D74335-FFB4-2201-E924-2ECDA5596709}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31EF9AD8-07A5-60D5-EB8C-2DBDCA1C6ADD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31EF9AD8-07A5-60D5-EB8C-2DBDCA1C6ADD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31EF9AD8-07A5-60D5-EB8C-2DBDCA1C6ADD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31EF9AD8-07A5-60D5-EB8C-2DBDCA1C6ADD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CC483B7-8AF1-F08A-5F3E-05178D0F82E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CC483B7-8AF1-F08A-5F3E-05178D0F82E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CC483B7-8AF1-F08A-5F3E-05178D0F82E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CC483B7-8AF1-F08A-5F3E-05178D0F82E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FE86891-6623-EE8E-10D9-75CB09267FBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FE86891-6623-EE8E-10D9-75CB09267FBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FE86891-6623-EE8E-10D9-75CB09267FBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FE86891-6623-EE8E-10D9-75CB09267FBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{623526D0-0DCF-4A68-82E8-B404A1CFF293}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{623526D0-0DCF-4A68-82E8-B404A1CFF293}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{623526D0-0DCF-4A68-82E8-B404A1CFF293}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{623526D0-0DCF-4A68-82E8-B404A1CFF293}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{034B9977-3261-4A11-AEA5-EEBEAEAAC31B} = {FB56D0F9-9B85-4283-B8F4-D3FA459BECC6}
+		{60D74335-FFB4-2201-E924-2ECDA5596709} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{BF8F8BF3-C62C-42C8-947E-5EFC89325164} = {08F2544D-E2AA-49E4-84A0-2C66696F0026}
+		{61237632-779E-4589-8A13-DF6FEF72FA22} = {08F2544D-E2AA-49E4-84A0-2C66696F0026}
+		{DC920657-EF5B-49EA-8F9B-F3EA506FA685} = {08F2544D-E2AA-49E4-84A0-2C66696F0026}
+		{31EF9AD8-07A5-60D5-EB8C-2DBDCA1C6ADD} = {2F409615-43D7-4180-A62F-C8E5A2FF501D}
+		{3CC483B7-8AF1-F08A-5F3E-05178D0F82E3} = {BF8F8BF3-C62C-42C8-947E-5EFC89325164}
+		{0FE86891-6623-EE8E-10D9-75CB09267FBF} = {61237632-779E-4589-8A13-DF6FEF72FA22}
+		{623526D0-0DCF-4A68-82E8-B404A1CFF293} = {DC920657-EF5B-49EA-8F9B-F3EA506FA685}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7FE0111B-D1A5-40E9-AA5A-344E5B5ED548}
+	EndGlobalSection
+EndGlobal
