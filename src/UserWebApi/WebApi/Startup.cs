@@ -75,19 +75,10 @@ namespace Walrus.PrestashopManager.UserWebApi.WebApi
             app.UseAuthentication();
             app.UseAuthorization();
 
-            //Use this config just in Develoment (not in Production)
-            //app.UseCors(config => config.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
-
             app.UseEndpoints(config =>
             {
-                config.MapControllers(); // Map attribute routing
-                //    .RequireAuthorization(); Apply AuthorizeFilter as global filter to all endpoints
-                //config.MapDefaultControllerRoute(); // Map default route {controller=Home}/{action=Index}/{id?}
+                config.MapControllers(); 
             });
-
-            //Using 'UseMvc' to configure MVC is not supported while using Endpoint Routing.
-            //To continue using 'UseMvc', please set 'MvcOptions.EnableEndpointRouting = false' inside 'ConfigureServices'.
-            //app.UseMvc();
         }
     }
 }

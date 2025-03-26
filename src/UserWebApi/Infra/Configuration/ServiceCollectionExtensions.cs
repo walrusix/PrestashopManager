@@ -31,10 +31,6 @@ namespace Walrus.PrestashopManager.UserWebApi.Infra.Configuration
             {
                 options
                     .UseSqlServer(configuration.GetConnectionString("SqlServerMainDb"));
-                //Tips
-                //Automatic client evaluation is no longer supported. This event is no longer generated.
-                //This line is no longer needed.
-                //.ConfigureWarnings(warning => warning.Throw(RelationalEventId.QueryClientEvaluationWarning));
             });
         }
 
@@ -44,59 +40,12 @@ namespace Walrus.PrestashopManager.UserWebApi.Infra.Configuration
             services.AddControllers(options =>
             {
                 options.Filters.Add(new AuthorizeFilter()); //Apply AuthorizeFilter as global filter to all actions
-
-                //Like [ValidateAntiforgeryToken] attribute but dose not validatie for GET and HEAD http method
-                //You can ingore validate by using [IgnoreAntiforgeryToken] attribute
-                //Use this filter when use cookie 
-                //options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
-
-                //options.UseYeKeModelBinder();
             }).AddNewtonsoftJson(option =>
             {
                 option.SerializerSettings.Converters.Add(new StringEnumConverter());
                 option.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-                //option.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
-                //option.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
             });
             services.AddSwaggerGenNewtonsoftSupport();
-
-            #region Old way (We don't need this from ASP.NET Core 3.0 onwards)
-            ////https://github.com/aspnet/Mvc/blob/release/2.2/src/Microsoft.AspNetCore.Mvc/MvcServiceCollectionExtensions.cs
-            //services.AddMvcCore(options =>
-            //{
-            //    options.Filters.Add(new AuthorizeFilter());
-
-            //    //Like [ValidateAntiforgeryToken] attribute but dose not validatie for GET and HEAD http method
-            //    //You can ingore validate by using [IgnoreAntiforgeryToken] attribute
-            //    //Use this filter when use cookie 
-            //    //options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
-
-            //    //options.UseYeKeModelBinder();
-            //})
-            //.AddApiExplorer()
-            //.AddAuthorization()
-            //.AddFormatterMappings()
-            //.AddDataAnnotations()
-            //.AddJsonOptions(option =>
-            //{
-            //    //option.JsonSerializerOptions
-            //})
-            //.AddNewtonsoftJson(/*option =>
-            //{
-            //    option.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
-            //    option.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
-            //}*/)
-
-            ////Microsoft.AspNetCore.Mvc.Formatters.Json
-            ////.AddJsonFormatters(/*options =>
-            ////{
-            ////    options.Formatting = Newtonsoft.Json.Formatting.Indented;
-            ////    options.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
-            ////}*/)
-
-            //.AddCors()
-            //.SetCompatibilityVersion(CompatibilityVersion.Latest); //.SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
-            #endregion
         }
 
 
@@ -114,7 +63,7 @@ namespace Walrus.PrestashopManager.UserWebApi.Infra.Configuration
 
                 var validationParameters = new TokenValidationParameters
                 {
-                    ClockSkew = TimeSpan.Zero, // default: 5 min
+                    ClockSkew = TimeSpan.Zero,
                     RequireSignedTokens = true,
 
                     ValidateIssuerSigningKey = true,
@@ -123,10 +72,10 @@ namespace Walrus.PrestashopManager.UserWebApi.Infra.Configuration
                     RequireExpirationTime = true,
                     ValidateLifetime = true,
 
-                    ValidateAudience = true, //default : false
+                    ValidateAudience = true, 
                     ValidAudience = jwtSettings.Audience,
 
-                    ValidateIssuer = true, //default : false
+                    ValidateIssuer = true,
                     ValidIssuer = jwtSettings.Issuer,
 
                     TokenDecryptionKey = new SymmetricSecurityKey(encryptionKey)
@@ -139,8 +88,6 @@ namespace Walrus.PrestashopManager.UserWebApi.Infra.Configuration
                 {
                     OnAuthenticationFailed = context =>
                     {
-                        //var logger = context.HttpContext.RequestServices.GetRequiredService<ILoggerFactory>().CreateLogger(nameof(JwtBearerEvents));
-                        //logger.LogError("Authentication failed.", context.Exception);
 
                         if (context.Exception != null)
                             throw new AppException(ApiResultStatusCode.UnAuthorized, "Authentication failed.", HttpStatusCode.Unauthorized, context.Exception, null);
@@ -160,12 +107,9 @@ namespace Walrus.PrestashopManager.UserWebApi.Infra.Configuration
                         if (!securityStamp.HasValue())
                             context.Fail("This token has no security stamp");
 
-                        //Find user and token from database and perform your custom validation
                         var userId = claimsIdentity.GetUserId<int>();
                         var user = await userRepository.GetByIdAsync(context.HttpContext.RequestAborted, userId);
 
-                        //if (user.SecurityStamp != Guid.Parse(securityStamp))
-                        //    context.Fail("Token security stamp is not valid.");
 
                         var validatedUser = await signInManager.ValidateSecurityStampAsync(context.Principal);
                         if (validatedUser == null)
@@ -178,14 +122,9 @@ namespace Walrus.PrestashopManager.UserWebApi.Infra.Configuration
                     },
                     OnChallenge = context =>
                     {
-                        //var logger = context.HttpContext.RequestServices.GetRequiredService<ILoggerFactory>().CreateLogger(nameof(JwtBearerEvents));
-                        //logger.LogError("OnChallenge error", context.Error, context.ErrorDescription);
-
                         if (context.AuthenticateFailure != null)
                             throw new AppException(ApiResultStatusCode.UnAuthorized, "Authenticate failure.", HttpStatusCode.Unauthorized, context.AuthenticateFailure, null);
                         throw new AppException(ApiResultStatusCode.UnAuthorized, "You are unauthorized to access this resource.", HttpStatusCode.Unauthorized);
-
-                        //return Task.CompletedTask;
                     }
                 };
             });
@@ -195,28 +134,9 @@ namespace Walrus.PrestashopManager.UserWebApi.Infra.Configuration
         {
             services.AddApiVersioning(options =>
             {
-                //url segment => {version}
-                options.AssumeDefaultVersionWhenUnspecified = true; //default => false;
-                options.DefaultApiVersion = new ApiVersion(1, 0); //v1.0 == v1
+                options.AssumeDefaultVersionWhenUnspecified = true; 
+                options.DefaultApiVersion = new ApiVersion(1, 0); 
                 options.ReportApiVersions = true;
-
-                //ApiVersion.TryParse("1.0", out var version10);
-                //ApiVersion.TryParse("1", out var version1);
-                //var a = version10 == version1;
-
-                //options.ApiVersionReader = new QueryStringApiVersionReader("api-version");
-                // api/posts?api-version=1
-
-                //options.ApiVersionReader = new UrlSegmentApiVersionReader();
-                // api/v1/posts
-
-                //options.ApiVersionReader = new HeaderApiVersionReader(new[] { "Api-Version" });
-                // header => Api-Version : 1
-
-                //options.ApiVersionReader = new MediaTypeApiVersionReader()
-
-                //options.ApiVersionReader = ApiVersionReader.Combine(new QueryStringApiVersionReader("api-version"), new UrlSegmentApiVersionReader())
-                // combine of [querystring] & [urlsegment]
             });
         }
     }
