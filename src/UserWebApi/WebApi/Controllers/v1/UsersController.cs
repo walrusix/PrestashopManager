@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using Services;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -14,6 +13,8 @@ using Walrus.PrestashopManager.UserWebApi.WebApi.Models;
 using Walrus.PrestashopManager.UserWebApi.Infra.Api;
 using Walrus.PrestashopManager.Data.Contracts;
 using Walrus.PrestashopManager.Domain.User;
+using Walrus.PrestashopManager.UserWebApi.Services.Services.Contracts;
+using Walrus.PrestashopManager.UserWebApi.WebApi.Models.User;
 
 namespace Walrus.PrestashopManager.UserWebApi.WebApi.Controllers.v1
 {
@@ -75,62 +76,32 @@ namespace Walrus.PrestashopManager.UserWebApi.WebApi.Controllers.v1
         /// <param name="tokenRequest">The information of token request</param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        [HttpPost("[action]")]
-        [AllowAnonymous]
-        public virtual async Task<ActionResult> Token([FromForm] TokenRequest tokenRequest, CancellationToken cancellationToken)
-        {
-            if (!tokenRequest.grant_type.Equals("password", StringComparison.OrdinalIgnoreCase))
-                throw new Exception("OAuth flow is not password.");
-
-            //var user = await userRepository.GetByUserAndPass(username, password, cancellationToken);
-            var user = await userManager.FindByNameAsync(tokenRequest.username);
-            if (user == null)
-                throw new BadRequestException("نام کاربری یا رمز عبور اشتباه است");
-
-            var isPasswordValid = await userManager.CheckPasswordAsync(user, tokenRequest.password);
-            if (!isPasswordValid)
-                throw new BadRequestException("نام کاربری یا رمز عبور اشتباه است");
-
-
-            //if (user == null)
-            //    throw new BadRequestException("نام کاربری یا رمز عبور اشتباه است");
-
-            var jwt = await jwtService.GenerateAsync(user);
-            return new JsonResult(jwt);
-        }
+        
 
         [HttpPost]
         [AllowAnonymous]
-        public virtual async Task<ApiResult<User>> Create(UserDto userDto, CancellationToken cancellationToken)
+        public virtual async Task<ApiResult<User>> Create(UserCreateApiRequestModel requestModel, CancellationToken cancellationToken)
         {
-            logger.LogError("متد Create فراخوانی شد");
-            //HttpContext(new Exception("متد Create فراخوانی شد"));
+            //var user = new User
+            //{
+            //    Age = userDto.Age,
+            //    FullName = userDto.FullName,
+            //    Gender = userDto.Gender,
+            //    UserName = userDto.UserName,
+            //    Email = userDto.Email
+            //};
+            //var result = await userManager.CreateAsync(user, userDto.Password);
 
-            //var exists = await userRepository.TableNoTracking.AnyAsync(p => p.UserName == userDto.UserName);
-            //if (exists)
-            //    return BadRequest("نام کاربری تکراری است");
+            //var result2 = await roleManager.CreateAsync(new Role
+            //{
+            //    Name = "Admin",
+            //    Description = "admin role"
+            //});
 
-
-            var user = new User
-            {
-                Age = userDto.Age,
-                FullName = userDto.FullName,
-                Gender = userDto.Gender,
-                UserName = userDto.UserName,
-                Email = userDto.Email
-            };
-            var result = await userManager.CreateAsync(user, userDto.Password);
-
-            var result2 = await roleManager.CreateAsync(new Role
-            {
-                Name = "Admin",
-                Description = "admin role"
-            });
-
-            var result3 = await userManager.AddToRoleAsync(user, "Admin");
+            //var result3 = await userManager.AddToRoleAsync(user, "Admin");
 
             //await userRepository.AddAsync(user, userDto.Password, cancellationToken);
-            return user;
+            return null;
         }
 
         [HttpPut]
@@ -140,10 +111,10 @@ namespace Walrus.PrestashopManager.UserWebApi.WebApi.Controllers.v1
 
             updateUser.UserName = user.UserName;
             updateUser.PasswordHash = user.PasswordHash;
-            updateUser.FullName = user.FullName;
-            updateUser.Age = user.Age;
-            updateUser.Gender = user.Gender;
-            updateUser.IsActive = user.IsActive;
+            //updateUser.FullName = user.FullName;
+            //updateUser.Age = user.Age;
+            //updateUser.Gender = user.Gender;
+            //updateUser.IsActive = user.IsActive;
             updateUser.LastLoginDate = user.LastLoginDate;
 
             await userRepository.UpdateAsync(updateUser, cancellationToken);

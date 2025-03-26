@@ -26,9 +26,6 @@ namespace Walrus.PrestashopManager.UserWebApi.Services.DataInitializer
             {
                 var user = new User
                 {
-                    Age = 25,
-                    FullName = "امین احمدی اصل",
-                    Gender = GenderType.Male,
                     UserName = "admin",
                     Email = "admin@site.com"
                 };

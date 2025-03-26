@@ -20,24 +20,14 @@ namespace WebFramework.Swagger
         {
             Assert.NotNull(services, nameof(services));
 
-            //More info : https://github.com/mattfrear/Swashbuckle.AspNetCore.Filters
-
-            #region AddSwaggerExamples
-            //Add services to use Example Filters in swagger
-            //If you want to use the Request and Response example filters (and have called options.ExampleFilters() above), then you MUST also call
-            //This method to register all ExamplesProvider classes form the assembly
-            //services.AddSwaggerExamplesFromAssemblyOf<PersonRequestExample>();
-
-            //We call this method for by reflection with the Startup type of entry assmebly (MyApi assembly)
-            var mainAssembly = Assembly.GetEntryAssembly(); // => MyApi project assembly
+            var mainAssembly = Assembly.GetEntryAssembly(); 
             var mainType = mainAssembly.GetExportedTypes()[0];
 
             const string methodName = nameof(Swashbuckle.AspNetCore.Filters.ServiceCollectionExtensions.AddSwaggerExamplesFromAssemblyOf);
-            //MethodInfo method = typeof(Swashbuckle.AspNetCore.Filters.ServiceCollectionExtensions).GetMethod(methodName);
             MethodInfo method = typeof(Swashbuckle.AspNetCore.Filters.ServiceCollectionExtensions).GetRuntimeMethods().FirstOrDefault(x => x.Name == methodName && x.IsGenericMethod);
             MethodInfo generic = method.MakeGenericMethod(mainType);
             generic.Invoke(null, new[] { services });
-            #endregion
+      
 
             //Add services and configuration to use swagger
             services.AddSwaggerGen(options =>
@@ -81,38 +71,11 @@ namespace WebFramework.Swagger
                 //Set summary of action if not already set
                 options.OperationFilter<ApplySummariesOperationFilter>();
 
-                #region Add UnAuthorized to Response
-                //Add 401 response and security requirements (Lock icon) to actions that need authorization
+
                 options.OperationFilter<UnauthorizedResponsesOperationFilter>(true, "OAuth2");
-                #endregion
 
-                #region Add Jwt Authentication
-                //Add Lockout icon on top of swagger ui page to authenticate
-                #region Old way
-                //options.AddSecurityDefinition("Bearer", new ApiKeyScheme
-                //{
-                //    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
-                //    Name = "Authorization",
-                //    In = "header"
-                //});
-                //options.AddSecurityRequirement(new Dictionary<string, IEnumerable<string>>
-                //{
-                //    {"Bearer", new string[] { }}
-                //});
-                #endregion
 
-                //options.AddSecurityRequirement(new OpenApiSecurityRequirement
-                //{
-                //    {
-                //        new OpenApiSecurityScheme
-                //        {
-                //            Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "OAuth2" }
-                //        },
-                //        Array.Empty<string>() //new[] { "readAccess", "writeAccess" }
-                //    }
-                //});
-
-                //OAuth2Scheme
+                
                 options.AddSecurityDefinition("OAuth2", new OpenApiSecurityScheme
                 {
                     //Scheme = "Bearer",
@@ -122,13 +85,7 @@ namespace WebFramework.Swagger
                     {
                         Password = new OpenApiOAuthFlow
                         {
-                            TokenUrl = new Uri("/api/v1/users/Token", UriKind.Relative),
-                            //AuthorizationUrl = new Uri("/api/v1/users/Token", UriKind.Relative)
-                            //Scopes = new Dictionary<string, string>
-                            //{
-                            //    { "readAccess", "Access read operations" },
-                            //    { "writeAccess", "Access write operations" }
-                            //}
+                            TokenUrl = new Uri("/api/v1/Token/Get", UriKind.Relative),
                         }
                     }
                 });
@@ -156,7 +113,7 @@ namespace WebFramework.Swagger
 
                 //If use FluentValidation then must be use this package to show validation in swagger (MicroElements.Swashbuckle.FluentValidation)
                 //options.AddFluentValidationRules();
-                #endregion
+                
             });
         }
 

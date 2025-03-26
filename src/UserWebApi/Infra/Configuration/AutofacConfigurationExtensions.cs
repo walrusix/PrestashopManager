@@ -1,9 +1,9 @@
 ﻿using Autofac;
-using Services;
 using Walrus.PrestashopManager.Data;
 using Walrus.PrestashopManager.Data.Contracts;
 using Walrus.PrestashopManager.Data.Repositories;
 using Walrus.PrestashopManager.Domain.Common;
+using Walrus.PrestashopManager.UserWebApi.Services.Services.Core;
 using Walrus.PrestashopManager.Utilities;
 using Walrus.PrestashopManager.Utilities.Utilities;
 

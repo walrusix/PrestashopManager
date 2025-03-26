@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Services;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -9,9 +10,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Walrus.PrestashopManager.Domain.Common;
 using Walrus.PrestashopManager.Domain.User;
+using Walrus.PrestashopManager.UserWebApi.Services.Services.Contracts;
 using Walrus.PrestashopManager.Utilities;
 
-namespace Services
+namespace Walrus.PrestashopManager.UserWebApi.Services.Services.Core
 {
     public class JwtService : IJwtService, IScopedDependency
     {

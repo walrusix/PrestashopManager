@@ -140,7 +140,6 @@ public class CreateUserRequestExample : IExamplesProvider<UserDto>
             Age = 25,
             UserName = "amin",
             Email = "admin@site.com",
-            Gender = GenderType.Male,
             Password = "1234567"
         };
     }
@@ -156,7 +155,7 @@ public class CreateUserResponseExample : IExamplesProvider<UserDto>
             Age = 25,
             UserName = "aminAhmadi",
             Email = "admin@site.com",
-            Gender = GenderType.Male,
+            //Gender = GenderType.Male,
             Password = "1234567"
         };
     }

@@ -1,7 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using Services;
+using System.Threading.Tasks;
 using Walrus.PrestashopManager.Domain.User;
 
-namespace Services
+namespace Walrus.PrestashopManager.UserWebApi.Services.Services.Contracts
 {
     public interface IJwtService
     {
