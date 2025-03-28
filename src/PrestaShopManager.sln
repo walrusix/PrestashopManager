@@ -29,6 +29,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Walrus.PrestashopManager.Us
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Walrus.PrestashopManager.UserWebApi.WebApi", "UserWebApi\WebApi\Walrus.PrestashopManager.UserWebApi.WebApi.csproj", "{623526D0-0DCF-4A68-82E8-B404A1CFF293}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05 - UserPresentation", "05 - UserPresentation", "{9DB77DE8-7DBD-4F41-8412-E9B9072DD392}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - Services", "01 - Services", "{7F178DE3-DFCC-491B-A3D1-6700CE6CC346}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Presentation", "02 - Presentation", "{D963B6E2-1982-4F12-A797-28B2B3566C13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Walrus.PrestashopManager.UserPresentation.Services", "UserPresentation\Services\Walrus.PrestashopManager.UserPresentation.Services\Walrus.PrestashopManager.UserPresentation.Services.csproj", "{BA97FEA6-9A54-49C9-A239-091DF2F1A193}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Walrus.UserPresentation.Presentation", "UserPresentation\Presentation\Walrus.UserPresentation.Presentation\Walrus.UserPresentation.Presentation.csproj", "{BB630C38-4362-419F-9A85-31252667BB1D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +69,14 @@ Global
 		{623526D0-0DCF-4A68-82E8-B404A1CFF293}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{623526D0-0DCF-4A68-82E8-B404A1CFF293}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{623526D0-0DCF-4A68-82E8-B404A1CFF293}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA97FEA6-9A54-49C9-A239-091DF2F1A193}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA97FEA6-9A54-49C9-A239-091DF2F1A193}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA97FEA6-9A54-49C9-A239-091DF2F1A193}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA97FEA6-9A54-49C9-A239-091DF2F1A193}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB630C38-4362-419F-9A85-31252667BB1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB630C38-4362-419F-9A85-31252667BB1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB630C38-4362-419F-9A85-31252667BB1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB630C38-4362-419F-9A85-31252667BB1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,6 +91,10 @@ Global
 		{3CC483B7-8AF1-F08A-5F3E-05178D0F82E3} = {BF8F8BF3-C62C-42C8-947E-5EFC89325164}
 		{0FE86891-6623-EE8E-10D9-75CB09267FBF} = {61237632-779E-4589-8A13-DF6FEF72FA22}
 		{623526D0-0DCF-4A68-82E8-B404A1CFF293} = {DC920657-EF5B-49EA-8F9B-F3EA506FA685}
+		{7F178DE3-DFCC-491B-A3D1-6700CE6CC346} = {9DB77DE8-7DBD-4F41-8412-E9B9072DD392}
+		{D963B6E2-1982-4F12-A797-28B2B3566C13} = {9DB77DE8-7DBD-4F41-8412-E9B9072DD392}
+		{BA97FEA6-9A54-49C9-A239-091DF2F1A193} = {7F178DE3-DFCC-491B-A3D1-6700CE6CC346}
+		{BB630C38-4362-419F-9A85-31252667BB1D} = {D963B6E2-1982-4F12-A797-28B2B3566C13}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7FE0111B-D1A5-40E9-AA5A-344E5B5ED548}

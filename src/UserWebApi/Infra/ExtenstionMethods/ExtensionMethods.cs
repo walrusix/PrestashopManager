@@ -14,7 +14,6 @@ using System.Threading.Tasks;
 using Walrus.PrestashopManager.Data;
 using Walrus.PrestashopManager.Utilities;
 using WebFramework.Configuration;
-using WebFramework.CustomMapping;
 using WebFramework.Swagger;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using Walrus.PrestashopManager.Utilities.Exceptions;
@@ -39,7 +38,6 @@ namespace Walrus.PrestashopManager.UserWebApi.Infra.ExtenstionMethods
         public static void AddInfraLayer(this IServiceCollection services, IConfiguration configuration)
         {
             var mainSetting = configuration.GetSection(nameof(MainSettings)).Get<MainSettings>();
-            services.InitializeAutoMapper();
             services.AddCustomIdentity(mainSetting.IdentitySettings);
             services.AddMinimalMvc();
             services.AddJwtAuthentication(mainSetting.JwtSettings);

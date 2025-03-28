@@ -37,5 +37,20 @@ namespace Walrus.PrestashopManager.UserWebApi.Services.Services.Core
             var jwt = await _jwtService.GenerateAsync(user);
             return new JsonResult(jwt);
         }
+
+
+        public async Task<bool> SendEmailAsync(string username, CancellationToken cancellationToken)
+        {
+            var user = await _userManager.FindByNameAsync(username);
+            if (user == null)
+                throw new BadRequestException("نام کاربری یا رمز عبور اشتباه است");
+
+            var isPasswordValid = await _userManager.CheckPasswordAsync(user, "123456");
+            if (!isPasswordValid)
+                throw new BadRequestException("نام کاربری یا رمز عبور اشتباه است");
+
+            var jwt = await _jwtService.GenerateAsync(user);
+            return true;
+        }
     }
 }

@@ -6,7 +6,6 @@ using Walrus.PrestashopManager.UserWebApi.Infra.Configuration;
 using Walrus.PrestashopManager.UserWebApi.Infra.ExtenstionMethods;
 using Walrus.PrestashopManager.Utilities;
 using WebFramework.Configuration;
-using WebFramework.CustomMapping;
 using WebFramework.Middlewares;
 using WebFramework.Swagger;
 

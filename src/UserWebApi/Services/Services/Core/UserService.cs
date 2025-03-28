@@ -12,30 +12,22 @@ namespace Walrus.PrestashopManager.UserWebApi.Services.Services.Core
 {
     public class UserService: IUserService
     {
-        public UserService()
+        private readonly UserManager<User> _userManager;
+
+        public UserService(UserManager<User> userManager)
         {
-            
+            _userManager = userManager;
         }
-        public async Task Create(string email,string mobile,CancellationToken cancellationToken)
+        public async Task Create(string email,string phoneNumber,CancellationToken cancellationToken)
         {
-            //var user = new User
-            //{
-            //    UserName = email,
-            //    Email = email,
-            //    Mobile = mobile
-            //};
-            //var result = await userManager.CreateAsync(user, userDto.Password);
-
-            //var result2 = await roleManager.CreateAsync(new Role
-            //{
-            //    Name = "Admin",
-            //    Description = "admin role"
-            //});
-
-            //var result3 = await userManager.AddToRoleAsync(user, "Admin");
-
-            ////await userRepository.AddAsync(user, userDto.Password, cancellationToken);
-            //return user;
+            var user = new User
+            {
+                UserName = email,
+                Email = email,
+                PhoneNumber = phoneNumber
+            };
+            var result = await _userManager.CreateAsync(user, "Password");
+            return ;
         }
     }
 }
