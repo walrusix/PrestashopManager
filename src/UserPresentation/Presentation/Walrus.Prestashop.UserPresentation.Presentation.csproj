@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Services\Walrus.PrestashopManager.UserPresentation.Services\Walrus.PrestashopManager.UserPresentation.Services.csproj" />
+  </ItemGroup>
+
 </Project>

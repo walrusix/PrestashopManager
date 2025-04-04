@@ -1,14 +1,20 @@
-using Walrus.UserPresentation.Presentation.Components;
+using Walrus.Prestashop.UserPresentation.Presentation.Components;
+using Walrus.PrestashopManager.Data.ExtensionMethods;
+using Walrus.PrestashopManager.UserPresentation.Services.ExtensionMethods;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
-
+builder.Services.AddServicesLayer(builder.Configuration);
+builder.Services.RegisterServicesServices();
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
+    
+    // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error", createScopeForErrors: true);

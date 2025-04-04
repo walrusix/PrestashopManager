@@ -37,7 +37,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Presentation", "02 - P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Walrus.PrestashopManager.UserPresentation.Services", "UserPresentation\Services\Walrus.PrestashopManager.UserPresentation.Services\Walrus.PrestashopManager.UserPresentation.Services.csproj", "{BA97FEA6-9A54-49C9-A239-091DF2F1A193}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Walrus.UserPresentation.Presentation", "UserPresentation\Presentation\Walrus.UserPresentation.Presentation\Walrus.UserPresentation.Presentation.csproj", "{BB630C38-4362-419F-9A85-31252667BB1D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Walrus.Prestashop.UserPresentation.Presentation", "UserPresentation\Presentation\Walrus.Prestashop.UserPresentation.Presentation.csproj", "{EF3DFF92-39DC-75E3-3D6A-1E4A836390BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,10 +73,10 @@ Global
 		{BA97FEA6-9A54-49C9-A239-091DF2F1A193}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA97FEA6-9A54-49C9-A239-091DF2F1A193}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA97FEA6-9A54-49C9-A239-091DF2F1A193}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BB630C38-4362-419F-9A85-31252667BB1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BB630C38-4362-419F-9A85-31252667BB1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BB630C38-4362-419F-9A85-31252667BB1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BB630C38-4362-419F-9A85-31252667BB1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF3DFF92-39DC-75E3-3D6A-1E4A836390BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF3DFF92-39DC-75E3-3D6A-1E4A836390BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF3DFF92-39DC-75E3-3D6A-1E4A836390BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF3DFF92-39DC-75E3-3D6A-1E4A836390BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -94,7 +94,7 @@ Global
 		{7F178DE3-DFCC-491B-A3D1-6700CE6CC346} = {9DB77DE8-7DBD-4F41-8412-E9B9072DD392}
 		{D963B6E2-1982-4F12-A797-28B2B3566C13} = {9DB77DE8-7DBD-4F41-8412-E9B9072DD392}
 		{BA97FEA6-9A54-49C9-A239-091DF2F1A193} = {7F178DE3-DFCC-491B-A3D1-6700CE6CC346}
-		{BB630C38-4362-419F-9A85-31252667BB1D} = {D963B6E2-1982-4F12-A797-28B2B3566C13}
+		{EF3DFF92-39DC-75E3-3D6A-1E4A836390BE} = {D963B6E2-1982-4F12-A797-28B2B3566C13}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7FE0111B-D1A5-40E9-AA5A-344E5B5ED548}

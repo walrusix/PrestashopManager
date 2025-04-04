@@ -36,7 +36,6 @@ namespace Walrus.PrestashopManager.UserWebApi.WebApi
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                //.UseServiceProviderFactory(new AutofacServiceProviderFactory())
                 .ConfigureLogging(options => options.ClearProviders())
                 .UseNLog()
                 .ConfigureWebHostDefaults(webBuilder =>

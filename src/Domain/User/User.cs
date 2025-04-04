@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Walrus.PrestashopManager.Domain.Common;
-using Walrus.PrestashopManager.Domain.Post;
 
 namespace Walrus.PrestashopManager.Domain.User
 {

@@ -19,7 +19,7 @@ namespace Walrus.PrestashopManager.Data.ExtensionMethods
         {
             services.AddDbContext(configuration);
         }
-        public static void RegisterDataServices(this ServiceCollection serviceCollection)
+        public static void RegisterDataServices(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 

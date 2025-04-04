@@ -125,58 +125,22 @@ namespace Walrus.PrestashopManager.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Walrus.PrestashopManager.Domain.Post.Category", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int?>("ParentCategoryId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ParentCategoryId");
-
-                    b.ToTable("Categories");
-                });
-
-            modelBuilder.Entity("Walrus.PrestashopManager.Domain.Post.Post", b =>
+            modelBuilder.Entity("Walrus.PrestashopManager.Domain.Application.Application", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
                         .HasDefaultValueSql("NEWSEQUENTIALID()");
 
-                    b.Property<int>("AuthorId")
-                        .HasColumnType("int");
+                    b.Property<decimal>("AnnualPrice")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AuthorId");
-
-                    b.HasIndex("CategoryId");
-
-                    b.ToTable("Posts");
+                    b.ToTable("Applications");
                 });
 
             modelBuilder.Entity("Walrus.PrestashopManager.Domain.User.Role", b =>
@@ -331,41 +295,6 @@ namespace Walrus.PrestashopManager.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Walrus.PrestashopManager.Domain.Post.Category", b =>
-                {
-                    b.HasOne("Walrus.PrestashopManager.Domain.Post.Category", "ParentCategory")
-                        .WithMany("ChildCategories")
-                        .HasForeignKey("ParentCategoryId");
-
-                    b.Navigation("ParentCategory");
-                });
-
-            modelBuilder.Entity("Walrus.PrestashopManager.Domain.Post.Post", b =>
-                {
-                    b.HasOne("Walrus.PrestashopManager.Domain.User.User", "Author")
-                        .WithMany()
-                        .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Walrus.PrestashopManager.Domain.Post.Category", "Category")
-                        .WithMany("Posts")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Author");
-
-                    b.Navigation("Category");
-                });
-
-            modelBuilder.Entity("Walrus.PrestashopManager.Domain.Post.Category", b =>
-                {
-                    b.Navigation("ChildCategories");
-
-                    b.Navigation("Posts");
                 });
 #pragma warning restore 612, 618
         }
